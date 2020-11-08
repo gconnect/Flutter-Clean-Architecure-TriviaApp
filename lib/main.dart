@@ -1,6 +1,10 @@
+import 'package:cleanarchitecturetriviaapp/number_trivia_page.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+import 'injection_container.dart' as di;
+
+void main() async {
+  await di.init();
   runApp(MyApp());
 }
 
@@ -9,33 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Clean Architecture',
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      title: 'Number Trivia',
+      theme: ThemeData(
+          primaryColor: Colors.green.shade800,
+          accentColor: Colors.green.shade600),
+      home: NumberTriviaPage(),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text("Trivia App"),
-        ),
-        body: Container(
-          child: Text("Hello"),
-        ) // This trailing comma makes auto-formatting nicer for build methods.
-        );
   }
 }
